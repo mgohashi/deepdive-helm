@@ -1,4 +1,4 @@
-# Default values for quarkus-deepdive.
+# Default values for deepdive-quarkus.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -13,6 +13,8 @@ image:
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
+
+host: deepdive-quarkus-mohashi-app.apps.mw.consulting-rh-br.com
 
 serviceAccount:
   # Specifies whether a service account should be created

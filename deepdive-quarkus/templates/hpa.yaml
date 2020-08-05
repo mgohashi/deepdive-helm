@@ -2,14 +2,14 @@
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ include "quarkus-deepdive.fullname" . }}
+  name: {{ include "deepdive-quarkus.fullname" . }}
   labels:
-    {{- include "quarkus-deepdive.labels" . | nindent 4 }}
+    {{- include "deepdive-quarkus.labels" . | nindent 4 }}
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: {{ include "quarkus-deepdive.fullname" . }}
+    name: {{ include "deepdive-quarkus.fullname" . }}
   minReplicas: {{ .Values.autoscaling.minReplicas }}
   maxReplicas: {{ .Values.autoscaling.maxReplicas }}
   metrics:

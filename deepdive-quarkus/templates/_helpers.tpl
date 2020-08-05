@@ -2,7 +2,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "quarkus-deepdive.name" -}}
+{{- define "deepdive-quarkus.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -11,7 +11,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "quarkus-deepdive.fullname" -}}
+{{- define "deepdive-quarkus.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -27,16 +27,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "quarkus-deepdive.chart" -}}
+{{- define "deepdive-quarkus.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "quarkus-deepdive.labels" -}}
-helm.sh/chart: {{ include "quarkus-deepdive.chart" . }}
-{{ include "quarkus-deepdive.selectorLabels" . }}
+{{- define "deepdive-quarkus.labels" -}}
+helm.sh/chart: {{ include "deepdive-quarkus.chart" . }}
+{{ include "deepdive-quarkus.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -46,17 +46,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "quarkus-deepdive.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "quarkus-deepdive.name" . }}
+{{- define "deepdive-quarkus.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "deepdive-quarkus.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "quarkus-deepdive.serviceAccountName" -}}
+{{- define "deepdive-quarkus.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "quarkus-deepdive.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "deepdive-quarkus.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}

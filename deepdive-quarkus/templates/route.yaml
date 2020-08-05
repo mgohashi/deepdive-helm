@@ -1,15 +1,15 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: {{ include "quarkus-deepdive.fullname" . }}
+  name: {{ include "deepdive-quarkus.fullname" . }}
   labels:
-    {{- include "quarkus-deepdive.labels" . | nindent 4 }}
+    {{- include "deepdive-quarkus.labels" . | nindent 4 }}
 spec:
-  host: ''
+  host: {{ .Values.host }}
   port:
     targetPort: http
   to:
     kind: Service
-    name: {{ include "quarkus-deepdive.fullname" . }}
+    name: {{ include "deepdive-quarkus.fullname" . }}
     weight: 100
   wildcardPolicy: None
